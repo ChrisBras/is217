@@ -1,5 +1,5 @@
 function myFunction() {
-	var a = 5;
+	var a = 05;
 	var b = 10;
 	var c = 20;
 	var d = a + b + c;
@@ -7,3 +7,14 @@ function myFunction() {
 }
 
 myFunction();
+
+
+spell: Command not found.
+
+spell: Command not found.
+
+spell: Command not found.
+
+spell: Command not found.
+
+spell: Command not found.
