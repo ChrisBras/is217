@@ -6,10 +6,14 @@
 <script type="text/javascript" src="../jquery-1.3.2.js"></script>
 <script type="text/javascript">
     $("document").ready(function() {
+        $("p[class]").css("border", "3px solid red");
+        $("p[id=para1]").css("border", "3px solid red");
+        $("p[id^=para]").css("border", "3px solid red");
+        $("p[id^=para][lang*=en-]").css("border", "3px solid red");
     });
 </script>
 <style type="text/css">
-.a { color: Navy; }
+.a { color: Brown; }
 .b { color: Maroon; }
 </style>
 </head>

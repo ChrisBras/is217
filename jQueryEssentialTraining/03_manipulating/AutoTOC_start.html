@@ -7,7 +7,20 @@
         $("document").ready(function() {
             buildBookmarks('h3', 'header');
         });
+
         function buildBookmarks(strWhichTag, sBookMarkNode) {
+            var i;
+            var cAnchorCount = 0;
+
+            // create the list that will hold the bookmark links
+            var oList = $("<ul id='bookmarksList'>");
+            $("div:not([id=header]) " + strWhichTag).each(function() {
+                $(this).html("<a name='bookmark" + cAnchorCount + "'></a>" + $(this).html());
+                oList.append($("<li><a href='#bookmark" + cAnchorCount++ + "'> " + $(this).text() + "</a></li>"));
+            });
+
+            // now find the ID of the bookmark container and append it
+            $("#" + sBookMarkNode).append(oList);
         }
     </script>
 </head>

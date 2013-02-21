@@ -6,7 +6,20 @@
     <script type="text/javascript" src="../jquery-1.3.2.js"></script>
     <script type="text/javascript">
         $(function() {
+            $("#evtTarget").hover(highlight, highlight);
+
+            $("#evtTarget").toggle(fnClick1, fnClick2);
         });
+        
+        function highlight(evt) {
+            $("#evtTarget").toggleClass("highlighted");
+        }
+        function fnClick1() {
+            $("#evtTarget").html("Click!");
+        }
+        function fnClick2() {
+            $("#evtTarget").html("Clack!");
+        }
     </script>
     <style type='text/css'>
     .normal {

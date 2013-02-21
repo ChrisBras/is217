@@ -4,6 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Join Groundswell!</title>
 <link href="../_css/main.css" rel="stylesheet" type="text/css" media="screen, projection" />
+<link href="../_css/sunny/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" media="screen, projection" />
+<script type="text/javascript" src="../_scripts/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="../_scripts/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var maxw = $("#commentsSection").width();
+        var minw = maxw;
+        var minh = $("#commentsSection").height();
+        $("#commentsSection").resizable({ minWidth:minw, maxWidth: maxw,  minHeight: minh });
+    });
+</script>
 </head>
 
 <body>
@@ -103,9 +114,9 @@
           <input type="checkbox" name="community" id="community" tabindex="130" />
           <label for="community">Community features</label>
 </p>
-      <p>
+        <p>
         <label for="comments">Additional Comments:</label>
-      </p>
+        </p>
       <div id="commentsSection">
         <textarea name="comments" id="comments" cols="45" rows="5" tabindex="140"></textarea>
       </div>

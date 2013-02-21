@@ -10,6 +10,7 @@ li {
 <script type="text/javascript" src="../jquery-1.3.2.js"></script>
 <script type="text/javascript">
     $("document").ready(function() {
+        $("li a[href$=.pdf]").after("<img src='images/small_pdf_icon.gif' align='absbottom' />");
     });
 </script>
 </head>
@@ -27,9 +28,6 @@ PDF file and automatically insert a PDF icon if it does.</p>
 	<li><a href="someurl.pdf">Link #6</a></li>
 	<li><a href="someurl.html">Link #7</a></li>
 	<li><a href="mailto:joe@joe.com">Email Link</a></li>
-	<li><a href="someurl.pdf">Link #6</a></li>
-	<li><a href="someurl.pdf">Link #6</a></li>
-	<li><a href="someurl.pdf">Link #6</a></li>
 </ul>
 </body>
 </html>

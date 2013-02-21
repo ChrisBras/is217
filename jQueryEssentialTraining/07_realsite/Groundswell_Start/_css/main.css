@@ -138,8 +138,8 @@ body  {
 	font-size: 0.9em;
 	line-height: 1.4em;
 	color: #000;
-	margin-bottom: 1.4em;
 	margin-left: 20px;
+	margin-bottom: 1.4em
 }
 #mainContent h4 {
 	font-size: 1.1em;
@@ -148,6 +148,10 @@ body  {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	margin-left: 20px;
 	margin-bottom: -.2em;
+}
+#mainContent h4 span.subhead 
+{
+    margin-left:40px;
 }
 
 #mainContent h2 {
@@ -159,6 +163,14 @@ body  {
 }
 #mainContent h2.special {
 	margin-bottom: 1em;
+}
+
+#newsSection {
+    margin-left: 20px;
+}
+#newsSection h4, #newsSection p  {
+	margin-left: 0;
+	margin-bottom: 0;
 }
 
 #mainContent h3 {
@@ -492,7 +504,6 @@ body  {
     height:150px
 }
 
-
 /* ---------- SINGLE COLUMN LAYOUT ---------*/
 #mainContentSingle {
 	margin: 0;
@@ -651,7 +662,6 @@ table#boardCompare thead th.name {
 	text-align: center;
 }
 
-
 #sidebar img {
 	display: block;
 	margin: 0 auto 1em auto;
@@ -673,6 +683,23 @@ table#boardCompare thead th.name {
 #sidebar ol li {
 	margin-bottom: 0.6em;
 	margin-left: 20px;
+}
+
+#photoShow {
+    position:relative;
+    height:190px;
+    width:240px;
+    margin-left: auto;
+}
+#photoShow div {
+    position:absolute;
+    z-index: 0;
+}
+#photoShow div.previous {
+    z-index: 1;
+}
+#photoShow div.current {
+    z-index: 2;
 }
 
 .tooltipContent {

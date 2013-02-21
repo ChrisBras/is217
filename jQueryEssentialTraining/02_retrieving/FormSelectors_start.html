@@ -2,10 +2,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Using Form Selectors and Filters</title>
+<title>Using Form Selectors and Filters</title>
 <script type="text/javascript" src="../jquery-1.3.2.js"></script>
 <script type="text/javascript">
     $("document").ready(function() {
+        $("form :input").css("border", "3px solid red");
+        $("form :text").css("border", "3px solid red");
+        $("form :text:enabled").css("border", "3px solid red");
+        $("form :checked").css("border", "3px solid red");
+        $("form :checkbox:checked").css("border", "3px solid red");
     });
 </script>
     <style type="text/css">
@@ -41,7 +46,7 @@
     </tr>
     <tr>
         <td class="style2">
-            Disabled Text Field</td>
+            Disabled Element</td>
         <td>
             <input id="Text1" type="text" disabled="disabled"/></td>
     </tr>
