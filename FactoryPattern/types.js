@@ -1,3 +1,5 @@
+'use strict';
+
 function domReady(callback){
   if (document.addEventListener){
     document.addEventListener('DOMContentLoaded', callback, false);
@@ -7,72 +9,96 @@ function domReady(callback){
 }
 
 
-// FactoryExample.js
+var mediator = (function(){
+     var subscribe = function(channel, fn){
+          if(!mediator.channels[channel]) {
+            mediator.channels[channel] = [];
+          }
+          mediator.channels[channel].push({ context : this, callback : fn });
+          return this;
+     };
+     var publish = function(channel){
+          if(!mediator.channels[channel]) {
+            return false;
+          }
 
-// Define a skeleton vehicle factory
-function LinkObjectFactory() {}
+          var args = Array.prototype.slice.call(arguments, 1);
+          for(var i = 0, l = mediator.channels[channel].length; i < l; i++){
+               var subscription = mediator.channels[channel][i];
+               subscription.callback.apply(subscription.context.args, args);
+          }
+          return this;
+     };
+     return {
+          channels : {},
+          publish : publish,
+          subscribe : subscribe,
+          installTo : function(obj){
+               obj.subscribe = subscribe;
+               obj.publish = publish;
+          }
+     };
+}());
 
-// Define the prototypes and utilities for this factory
 
-// Our default vehicleClass is Car
+function DOMElementFactory(element) {
+  this.element = element;
 
-// Our Factory method for creating new Vehicle instances
-LinkObjectFactory.prototype.createLinks = function ( options ) {
-var links = [];
+}
 
+DOMElementFactory.prototype.createChildren = function ( options ) {
+var domObjects = [],
+element = this.element,
+childrenType = options.childrenType;
 
-for (var i in options){
-  var l = document.createElement('li');
-  var a = document.createElement('a');
+for (var i in options.children){
+  var l = document.createElement(element);
+  var a = document.createElement(childrenType);
 
-for (var property in options[i])
+for (var property in options.children[i])
   {
-     a[property]= options[i][property];
+     a[property]= options.children[i][property];
   }
-
-  function remove(options){
-
-
-  }(options)
 
   l.appendChild(a);
-  links.push(l);
+  domObjects.push(l);
 }
-  return links;
+  mediator.publish(element + '-' + childrenType + '-' + 'Created', domObjects);
 };
 
-// Create an instance of our factory that makes cars
+function ScreenEvents(){
+
+  mediator.subscribe('li-a-Created', function(links){
+    for (var i in links){
+      console.log(this);
+      var list = document.getElementById('links');
+      list.appendChild(links[i]);
+    }
+  });
+
+}
+
+
 domReady(function(){
+  new ScreenEvents();
 
-  var aFactory = new LinkObjectFactory();
-  var aLinks = aFactory.createLinks([
+  var liFactory = new DOMElementFactory('li');
+  liFactory.createChildren(
+   { childrenType: 'a',
+    children: [
               {
-                href: "http://www.google.com/",
-                textContent: "Google"
+                href: 'http://www.google.com/',
+                textContent: 'Google'
               },
 
               {
-                href: "http://www.yahoo.com/",
-                textContent: "Yahoo"
+                href: 'http://www.yahoo.com/',
+                textContent: 'Yahoo'
               },
               {
-                href: "http://www.njit.edu",
-                textContent: "NJIT"
+                href: 'http://www.njit.edu',
+                textContent: 'NJIT'
               }
-              ]);
-
-  // Test to confirm our car was created using the vehicleClass/prototype Car
-  // Outputs: true
-
-  // Outputs: Car object of color "yellow", doors: 6 in a "brand new" state
-  console.log( aLinks );
-
-  list = document.getElementById('links');
-
-  // console.log(linkDiv);
-  for (var i in aLinks){
-    list.appendChild(aLinks[i]);
-  }
-
+              ]});
 
 });
