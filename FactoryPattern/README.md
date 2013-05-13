@@ -20,4 +20,8 @@ The patterns I have used is the factory pattern, the mediator pattern, and the f
 3. An Explanation of how each pattern works together
 ----------------------------------------------------
 My program is a continutation of the factory pattern used in class to create link dom elements using an array of objects. However, the object will create any dom element of choice. A factory is created by passing the pattern element type as a string. Children will be passed to each factory object to create an instance of parent/children nodes. Instead of returing this instance to the original caller it passes it to a message publisher. This allows all subscribers to be alerted when a new object is created. Furthermore, the subscriber does not have to check exactly what kind of object is created. Instead the type of message will depend on the object being returned. 
+<<<<<<< HEAD
 Lastly, a facade pattern is used to check if the dom is ready. This will depend on the browser and how it implements event listening. The facade allows for a callback to be passed to the event listener regardless of browser types.
+=======
+Lastly, a facade pattern is used to check if the dom is ready. This will depend on the browser and how it implements event listening. The facede allows for a callback to be passed to the event listener regardless of browser types.
+>>>>>>> ce6f05fcd91163e7b6bf89586f9f0ecd617e4e84
